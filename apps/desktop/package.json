@@ -51,7 +51,7 @@
   "build": {
     "appId": "ai.leio.harness",
     "productName": "Leio Harness",
-    "asar": false,
+    "asar": true,
     "npmRebuild": false,
     "directories": {
       "output": "dist",
