@@ -1,0 +1,5 @@
+# Bilingual-pair consistency record (docs/i18n/README.md): the content hashes of
+# both language files as of the last confirmed-consistent state. Git is unavailable
+# in this checkout, so these are calculated Git blob hashes without writing a ref.
+2026-08-14-leio-product-namespace-and-branding.md: 24105e5e51e35c3787b290c061da9027452e1d5c
+2026-08-14-leio-product-namespace-and-branding.zh.md: be6ed1e697575871ea129fd39d9ad5dfe2ce0f06

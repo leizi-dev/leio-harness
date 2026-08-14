@@ -1,0 +1,27 @@
+# Minimal tool-pwsh composition: real app boot path, real pwsh executor, real
+# foreground + background tool calls; driven by the package's loader.spec.ts.
+- id: system-prompt
+  name: '@leio-ai/leio-system-prompt'
+
+- id: tools
+  name: '@leio-ai/leio-tools'
+
+- id: subprocess
+  name: '@leio-ai/leio-subprocess-local'
+
+- id: bash
+  name: '@leio-ai/leio-pwsh-local'
+  config:
+    graceMs: 200
+
+- id: shell-env
+  name: '@leio-ai/leio-shell-env'
+
+- id: tasks
+  name: '@leio-ai/leio-jobs-local'
+
+- id: tool-jobs
+  name: '@leio-ai/leio-tool-jobs'
+
+- id: tool-pwsh
+  name: '@leio-ai/leio-tool-pwsh'

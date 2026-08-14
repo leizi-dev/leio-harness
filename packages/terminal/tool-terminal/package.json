@@ -1,0 +1,68 @@
+{
+  "name": "@leio-ai/leio-tool-terminal",
+  "description": "Six model-facing persistent PTY tools with owner isolation and generic background-job integration",
+  "version": "0.1.0-rc.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/terminal/tool-terminal"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@deepseek-ai/schemastery": "workspace:^"
+  },
+  "peerDependencies": {
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-terminal": "workspace:^",
+    "@leio-ai/leio-output-retention": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@leio-ai/leio-jobs": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis-plugin-include": "workspace:^",
+    "@deepseek-ai/cordis-plugin-loader": "workspace:^",
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-terminal": "workspace:^",
+    "@leio-ai/leio-terminal-bash": "workspace:^",
+    "@leio-ai/leio-output-retention": "workspace:^",
+    "@leio-ai/leio-sandbox": "workspace:^",
+    "@leio-ai/leio-sandbox-policy": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@leio-ai/leio-subprocess-local": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@leio-ai/leio-jobs": "workspace:^",
+    "@leio-ai/leio-jobs-local": "workspace:^",
+    "@leio-ai/leio-tool-jobs": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

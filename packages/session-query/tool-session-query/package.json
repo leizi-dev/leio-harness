@@ -1,0 +1,63 @@
+{
+  "name": "@leio-ai/leio-tool-session-query",
+  "description": "Workspace-authorized model-facing session history search, trace, and event read tools",
+  "version": "0.1.0-rc.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/session-query/tool-session-query"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@leio-ai/leio-session-query": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@leio-ai/leio-timeout": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "workspace:^"
+  },
+  "devDependencies": {
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@leio-ai/leio-session-persistence": "workspace:^",
+    "@leio-ai/leio-session-persistence-jsonl": "workspace:^",
+    "@leio-ai/leio-session-query": "workspace:^",
+    "@leio-ai/leio-session-query-sqlite": "workspace:^",
+    "@leio-ai/leio-session-title": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@leio-ai/leio-timeout": "workspace:^",
+    "@leio-ai/leio-tool-call-timeout-policy": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

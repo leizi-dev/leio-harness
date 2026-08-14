@@ -1,0 +1,41 @@
+# Keyless real-Loader composition for the semantic-checkpoint recovery snapshot.
+# The headless driver resumes the seeded interrupted session and emits its next
+# turn over stream-json; the replay adapter supplies the deterministic response.
+
+- id: persistence
+  name: '@leio-ai/leio-session-persistence-jsonl'
+  config:
+    root: './.sessions'
+    compression: none
+
+- id: checkpoint
+  name: '@leio-ai/leio-session-checkpoint-policy'
+
+- id: replay
+  name: '@leio-ai/leio-llm-replay'
+  config:
+    file: !!js process.env.DSH_SNAPSHOT_FILE
+    overrideFile: !!js process.env.DSH_SNAPSHOT_OVERRIDE
+
+# Managed child-process groups for the bash executor (spawn/kill/output plumbing).
+- id: subprocess
+  name: '@leio-ai/leio-subprocess-local'
+
+- id: bash
+  name: '@leio-ai/leio-bash-local'
+  config:
+    timeoutMs: 60000
+
+- id: agent
+  name: '@leio-ai/leio-agent-spine-demo'
+  config:
+    agents: []
+    workspaceContext: false
+    skills:
+      enabled: false
+    toolJobs: false
+    goals: false
+
+# Await the persisted resume before the headless driver inspects root agents.
+- id: resumed-agent
+  name: './tests/fixtures/semantic-checkpoint-agent.ts'

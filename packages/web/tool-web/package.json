@@ -1,0 +1,63 @@
+{
+  "name": "@leio-ai/leio-tool-web",
+  "description": "Model-facing web tools (web_search, web_fetch) over the Leio Harness web capability seam (ctx.web)",
+  "version": "0.1.0-rc.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/web/tool-web"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@leio-ai/leio-web": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "dependencies": {
+    "@joplin/turndown-plugin-gfm": "^1.0.67",
+    "@deepseek-ai/schemastery": "workspace:^",
+    "turndown": "^7.2.4"
+  },
+  "devDependencies": {
+    "@leio-ai/leio-agent": "workspace:^",
+    "@types/turndown": "^5.0.6",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@leio-ai/leio-spill-local": "workspace:^",
+    "@leio-ai/leio-spill-policy": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@leio-ai/leio-tool-call-timeout-policy": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@leio-ai/leio-web": "workspace:^",
+    "@leio-ai/leio-web-fetch-http": "workspace:^",
+    "@leio-ai/leio-web-search-exa": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

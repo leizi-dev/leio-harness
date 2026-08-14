@@ -1,0 +1,57 @@
+{
+  "name": "@leio-ai/leio-session-checkpoint-policy",
+  "description": "Semantic session durability checkpoints before model requests and tool side effects",
+  "version": "0.1.0-rc.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/session/session-checkpoint-policy"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@leio-ai/leio-session-persistence": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis-plugin-loader": "workspace:^",
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-agent-loop": "workspace:^",
+    "@leio-ai/leio-agent-loop-testkit": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@leio-ai/leio-session-persistence": "workspace:^",
+    "@leio-ai/leio-session-persistence-jsonl": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

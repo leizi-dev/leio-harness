@@ -1,0 +1,128 @@
+{
+  "name": "@leio-ai/leio-base",
+  "description": "The shared dsh core as a profile bundle: every profile's first patch layer, inserting the base plugin rows over the empty profile root",
+  "version": "0.1.0-rc.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/bundle/base"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "cordis.patch.yml",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis-plugin-hmr": "workspace:^",
+    "@deepseek-ai/cordis-plugin-timer": "workspace:^",
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-agent-default-model": "workspace:^",
+    "@leio-ai/leio-agent-loop": "workspace:^",
+    "@leio-ai/leio-attachment-local": "workspace:^",
+    "@leio-ai/leio-shell-env": "workspace:^",
+    "@leio-ai/leio-bash-sandbox": "workspace:^",
+    "@leio-ai/leio-command-compact": "workspace:^",
+    "@leio-ai/leio-command-feedback": "workspace:^",
+    "@leio-ai/leio-command-goal": "workspace:^",
+    "@leio-ai/leio-commands": "workspace:^",
+    "@leio-ai/leio-compaction-basic": "workspace:^",
+    "@leio-ai/leio-compaction-tool-result-pruner": "workspace:^",
+    "@leio-ai/leio-credentials-local": "workspace:^",
+    "@leio-ai/leio-fs-local": "workspace:^",
+    "@leio-ai/leio-fs-observation-policy": "workspace:^",
+    "@leio-ai/leio-fs-sandbox": "workspace:^",
+    "@leio-ai/leio-goal": "workspace:^",
+    "@leio-ai/leio-goal-round-driver": "workspace:^",
+    "@leio-ai/leio-api-gateway": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-llm-deepseek": "workspace:^",
+    "@leio-ai/leio-llm-pi-ai": "workspace:^",
+    "@leio-ai/leio-llm-retry": "workspace:^",
+    "@leio-ai/leio-permission-presets": "workspace:^",
+    "@leio-ai/leio-plan-mode": "workspace:^",
+    "@leio-ai/leio-pwsh-sandbox": "workspace:^",
+    "@leio-ai/leio-repeat-tool-reminder": "workspace:^",
+    "@leio-ai/leio-sandbox-local": "workspace:^",
+    "@leio-ai/leio-sandbox-policy": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@leio-ai/leio-session-checkpoint-policy": "workspace:^",
+    "@leio-ai/leio-session-persistence-jsonl": "workspace:^",
+    "@leio-ai/leio-session-projection": "workspace:^",
+    "@leio-ai/leio-session-query-sqlite": "workspace:^",
+    "@leio-ai/leio-session-telemetry-otel": "workspace:^",
+    "@leio-ai/leio-session-title": "workspace:^",
+    "@leio-ai/leio-session-title-first-prompt-llm": "workspace:^",
+    "@leio-ai/leio-settings-file": "workspace:^",
+    "@leio-ai/leio-skill": "workspace:^",
+    "@leio-ai/leio-skill-badge": "workspace:^",
+    "@leio-ai/leio-skill-filesystem": "workspace:^",
+    "@leio-ai/leio-spill-local": "workspace:^",
+    "@leio-ai/leio-spill-policy": "workspace:^",
+    "@leio-ai/leio-subagent": "workspace:^",
+    "@leio-ai/leio-subagent-fork-in-process": "workspace:^",
+    "@leio-ai/leio-subagent-spawn-in-process": "workspace:^",
+    "@leio-ai/leio-subprocess-local": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@leio-ai/leio-jobs-local": "workspace:^",
+    "@leio-ai/leio-tool-call-timeout-policy": "workspace:^",
+    "@leio-ai/leio-token-meter": "workspace:^",
+    "@leio-ai/leio-tool-bash": "workspace:^",
+    "@leio-ai/leio-tool-fs": "workspace:^",
+    "@leio-ai/leio-tool-fs-search": "workspace:^",
+    "@leio-ai/leio-tool-goal": "workspace:^",
+    "@leio-ai/leio-tool-pwsh": "workspace:^",
+    "@leio-ai/leio-tool-ralph": "workspace:^",
+    "@leio-ai/leio-tool-skill": "workspace:^",
+    "@leio-ai/leio-tool-str-replace-editor": "workspace:^",
+    "@leio-ai/leio-tool-subagent": "workspace:^",
+    "@leio-ai/leio-tool-subagent-control": "workspace:^",
+    "@leio-ai/leio-tool-subagent-report": "workspace:^",
+    "@leio-ai/leio-tool-jobs": "workspace:^",
+    "@leio-ai/leio-tool-todo": "workspace:^",
+    "@leio-ai/leio-tool-web": "workspace:^",
+    "@leio-ai/leio-tool-workflow": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@leio-ai/leio-typert-loader": "workspace:^",
+    "@leio-ai/leio-typert-registry": "workspace:^",
+    "@leio-ai/leio-user-approval": "workspace:^",
+    "@leio-ai/leio-user-questions": "workspace:^",
+    "@leio-ai/leio-web": "workspace:^",
+    "@leio-ai/leio-web-search-deepseek": "workspace:^",
+    "@leio-ai/leio-workflow-worker-thread": "workspace:^",
+    "@leio-ai/leio-agent-instructions": "workspace:^"
+  },
+  "peerDependencies": {
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "devDependencies": {
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

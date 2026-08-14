@@ -1,0 +1,64 @@
+{
+  "name": "@leio-ai/leio-tool-ralph",
+  "description": "Model-facing fresh-agent Ralph loop over the workflow and subagent seams",
+  "version": "0.1.0-rc.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/workflow/tool-ralph"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-subagent": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@leio-ai/leio-workflow": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "workspace:^"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis-plugin-loader": "workspace:^",
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-agent-loop": "workspace:^",
+    "@leio-ai/leio-agent-loop-testkit": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@leio-ai/leio-subagent": "workspace:^",
+    "@leio-ai/leio-subagent-in-process-driver": "workspace:^",
+    "@leio-ai/leio-subagent-spawn-in-process": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@leio-ai/leio-workflow": "workspace:^",
+    "@leio-ai/leio-workflow-worker-thread": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

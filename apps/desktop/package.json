@@ -1,0 +1,78 @@
+{
+  "name": "@leio-ai/leio-desktop",
+  "description": "Electron desktop shell and Windows installer for Leio Harness",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "apps/desktop"
+  },
+  "type": "module",
+  "main": "src/main.mjs",
+  "files": [
+    "src",
+    "build/icon.png"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis --x64"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis-plugin-group": "workspace:^",
+    "@leio-ai/leio": "workspace:^",
+    "@leio-ai/leio-anonymous-user-id": "workspace:^",
+    "@leio-ai/leio-app-boot": "workspace:^",
+    "@leio-ai/leio-atomic-write": "workspace:^",
+    "@leio-ai/leio-bash-local": "workspace:^",
+    "@leio-ai/leio-code-runtime": "workspace:^",
+    "@leio-ai/leio-compaction": "workspace:^",
+    "@leio-ai/leio-fs": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-output-retention": "workspace:^",
+    "@leio-ai/leio-sandbox": "workspace:^",
+    "@leio-ai/leio-scope": "workspace:^",
+    "@leio-ai/leio-session-telemetry": "workspace:^",
+    "@leio-ai/leio-session-title-llm": "workspace:^",
+    "@leio-ai/leio-shell": "workspace:^",
+    "@leio-ai/leio-spill": "workspace:^",
+    "@leio-ai/leio-subagent-in-process-driver": "workspace:^",
+    "@leio-ai/leio-subprocess": "workspace:^",
+    "@leio-ai/leio-timeout": "workspace:^",
+    "@leio-ai/leio-workflow": "workspace:^"
+  },
+  "devDependencies": {
+    "electron": "43.4.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "ai.leio.harness",
+    "productName": "Leio Harness",
+    "asar": false,
+    "npmRebuild": false,
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "build/icon.png",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png",
+      "artifactName": "Leio-Harness-Setup-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Leio Harness"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "/",
+  "name": "Leio Harness",
+  "short_name": "Leio",
+  "start_url": "/",
+  "scope": "/",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "/leio-icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "name": "@leio-ai/leio-client-ui-directory-picker-browse",
+  "description": "In-app directory browsing surface: the workspace directory-flow owner rendering the host's listing and creation primitives",
+  "version": "0.1.0-rc.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/client/ui-directory-picker-browse"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [
+        "@leio-ai/leio-client-runtime",
+        "@leio-ai/leio-client-ui-workspace",
+        "@leio-ai/leio-client-locale"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "bundle": "tsdown",
+    "watch": "tsdown --watch"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "clsx": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@leio-ai/leio-client-locale": "workspace:^",
+    "@leio-ai/leio-client-runtime": "workspace:^",
+    "@leio-ai/leio-client-ui-primitives": "workspace:^",
+    "@leio-ai/leio-client-ui-slots": "workspace:^",
+    "@leio-ai/leio-client-ui-workspace": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@leio-ai/leio-client-locale": "workspace:^",
+    "@leio-ai/leio-client-runtime": "workspace:^",
+    "@leio-ai/leio-client-test-runtime": "workspace:^",
+    "@leio-ai/leio-client-ui-primitives": "workspace:^",
+    "@leio-ai/leio-client-ui-slots": "workspace:^",
+    "@leio-ai/leio-client-ui-workspace": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "~18.3.1",
+    "@deepseek-ai/cordis": "workspace:^",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/client.js",
+    "lib/types/**/*.d.ts"
+  ]
+}

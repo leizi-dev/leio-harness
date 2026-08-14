@@ -1,0 +1,63 @@
+{
+  "name": "@leio-ai/leio-session-log-export",
+  "description": "Web Session-log export command and shared download dialog",
+  "version": "0.1.0-rc.5",
+  "publishConfig": { "access": "public" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/session-query/session-log-export"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": { "types": "./lib/types/index.d.ts", "default": "./lib/index.js" },
+    "./invariant": { "types": "./lib/types/invariant.d.ts", "default": "./lib/invariant.js" },
+    "./client": { "types": "./lib/types/client/index.d.ts", "default": "./lib/client.js" },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": ["lib/index.js", "lib/invariant.js", "lib/client.js", "lib/types/**/*.d.ts"],
+  "scripts": { "bundle": "tsdown", "watch": "tsdown --watch" },
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "workspace:^",
+    "@leio-ai/leio-client-locale": "workspace:^",
+    "@leio-ai/leio-client-runtime": "workspace:^",
+    "@leio-ai/leio-client-ui-commands": "workspace:^",
+    "@leio-ai/leio-client-ui-conversation": "workspace:^",
+    "@leio-ai/leio-client-ui-primitives": "workspace:^",
+    "@leio-ai/leio-client-ui-slots": "workspace:^",
+    "@leio-ai/leio-commands": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "workspace:^",
+    "@deepseek-ai/cordis-plugin-loader": "workspace:^",
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-client-locale": "workspace:^",
+    "@leio-ai/leio-client-runtime": "workspace:^",
+    "@leio-ai/leio-client-ui-commands": "workspace:^",
+    "@leio-ai/leio-client-ui-conversation": "workspace:^",
+    "@leio-ai/leio-client-ui-primitives": "workspace:^",
+    "@leio-ai/leio-client-ui-slots": "workspace:^",
+    "@leio-ai/leio-commands": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@types/react": "~18.3.1",
+    "react": "^18.2.0"
+  },
+  "dsh": {
+    "client": {
+      "inject": [
+        "@leio-ai/leio-client-locale",
+        "@leio-ai/leio-client-runtime",
+        "@leio-ai/leio-client-ui-commands",
+        "@leio-ai/leio-client-ui-conversation"
+      ],
+      "platform": "web"
+    }
+  }
+}

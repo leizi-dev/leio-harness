@@ -1,0 +1,106 @@
+{
+  "name": "@leio-ai/leio-subagent",
+  "description": "Abstract subagent seam (ctx.subagents): named-provider registry for delegating to child agents",
+  "version": "0.1.0-rc.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/subagent/subagent"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./client": {
+      "types": "./lib/types/client.d.ts",
+      "default": "./lib/types/client.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "peerDependencies": {
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-agent-presets": "workspace:^",
+    "@leio-ai/leio-brand": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-sandbox": "workspace:^",
+    "@leio-ai/leio-sandbox-policy": "workspace:^",
+    "@leio-ai/leio-scope": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@leio-ai/leio-session-persistence": "workspace:^",
+    "@leio-ai/leio-session-projection": "workspace:^",
+    "@leio-ai/leio-session-projection-cache": "workspace:^",
+    "@leio-ai/leio-jobs": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@leio-ai/leio-user-approval": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "peerDependenciesMeta": {
+    "@leio-ai/leio-agent-presets": {
+      "optional": true
+    },
+    "@leio-ai/leio-sandbox": {
+      "optional": true
+    },
+    "@leio-ai/leio-sandbox-policy": {
+      "optional": true
+    },
+    "@leio-ai/leio-session-persistence": {
+      "optional": true
+    },
+    "@leio-ai/leio-session-projection": {
+      "optional": true
+    },
+    "@leio-ai/leio-session-projection-cache": {
+      "optional": true
+    },
+    "@leio-ai/leio-jobs": {
+      "optional": true
+    },
+    "@leio-ai/leio-user-approval": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-agent-presets": "workspace:^",
+    "@leio-ai/leio-brand": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-sandbox": "workspace:^",
+    "@leio-ai/leio-sandbox-policy": "workspace:^",
+    "@leio-ai/leio-scope": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@leio-ai/leio-session-persistence": "workspace:^",
+    "@leio-ai/leio-session-projection": "workspace:^",
+    "@leio-ai/leio-session-projection-cache": "workspace:^",
+    "@leio-ai/leio-storage": "workspace:^",
+    "@leio-ai/leio-storage-domain": "workspace:^",
+    "@leio-ai/leio-jobs": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@leio-ai/leio-user-approval": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

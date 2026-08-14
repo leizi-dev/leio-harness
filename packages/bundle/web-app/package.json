@@ -1,0 +1,121 @@
+{
+  "name": "@leio-ai/leio-web-app",
+  "description": "The dsh browser-surface bundle: the web patch layer over dsh-base plus the runtime glue plugin (frontend dist serving, web-surface prompt, bash runtime variables, URL line)",
+  "version": "0.1.0-rc.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/bundle/web-app"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./startup": {
+      "types": "./lib/types/startup.d.ts",
+      "default": "./lib/startup.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/startup.js",
+    "cordis.patch.yml",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "@leio-ai/leio-agent-presets": "workspace:^",
+    "@leio-ai/leio-api-remotes": "workspace:^",
+    "@leio-ai/leio-app-boot": "workspace:^",
+    "@leio-ai/leio-client-connection": "workspace:^",
+    "@leio-ai/leio-client-hmr": "workspace:^",
+    "@leio-ai/leio-client-locale": "workspace:^",
+    "@leio-ai/leio-client-modules": "workspace:^",
+    "@leio-ai/leio-client-runtime": "workspace:^",
+    "@leio-ai/leio-client-ui-agent-preset": "workspace:^",
+    "@leio-ai/leio-client-ui-commands": "workspace:^",
+    "@leio-ai/leio-client-ui-conversation": "workspace:^",
+    "@leio-ai/leio-client-ui-cordis": "workspace:^",
+    "@leio-ai/leio-client-ui-deliverables": "workspace:^",
+    "@leio-ai/leio-client-ui-directory-picker-browse": "workspace:^",
+    "@leio-ai/leio-client-ui-directory-picker-native": "workspace:^",
+    "@leio-ai/leio-client-ui-message-feedback": "workspace:^",
+    "@leio-ai/leio-client-ui-goal": "workspace:^",
+    "@leio-ai/leio-client-ui-layout": "workspace:^",
+    "@leio-ai/leio-client-ui-model-selection": "workspace:^",
+    "@leio-ai/leio-client-ui-settings-models": "workspace:^",
+    "@leio-ai/leio-client-ui-settings-plugin-inventory": "workspace:^",
+    "@leio-ai/leio-client-ui-permission-presets": "workspace:^",
+    "@leio-ai/leio-client-ui-plan": "workspace:^",
+    "@leio-ai/leio-client-ui-settings-plugins": "workspace:^",
+    "@leio-ai/leio-client-ui-user-questions": "workspace:^",
+    "@leio-ai/leio-client-ui-settings": "workspace:^",
+    "@leio-ai/leio-client-ui-settings-general": "workspace:^",
+    "@leio-ai/leio-client-ui-sidebar": "workspace:^",
+    "@leio-ai/leio-client-ui-skill": "workspace:^",
+    "@leio-ai/leio-client-ui-input-trigger": "workspace:^",
+    "@leio-ai/leio-client-ui-subagent": "workspace:^",
+    "@leio-ai/leio-client-ui-jobs": "workspace:^",
+    "@leio-ai/leio-client-ui-theme": "workspace:^",
+    "@leio-ai/leio-client-ui-tool": "workspace:^",
+    "@leio-ai/leio-client-ui-workflow-run": "workspace:^",
+    "@leio-ai/leio-client-ui-trajectory": "workspace:^",
+    "@leio-ai/leio-client-ui-workspace": "workspace:^",
+    "@leio-ai/leio-cmdline": "workspace:^",
+    "@leio-ai/leio-code-runtime-worker-thread": "workspace:^",
+    "@leio-ai/leio-cordis-client-runner": "workspace:^",
+    "@leio-ai/leio-cordis-host-runner": "workspace:^",
+    "@leio-ai/leio-web-frontend": "workspace:^",
+    "@leio-ai/leio-host-frontend-static": "workspace:^",
+    "@leio-ai/leio-host-apiproxy": "workspace:^",
+    "@leio-ai/leio-host-directory-picker-auto": "workspace:^",
+    "@leio-ai/leio-host-directory-picker-browse": "workspace:^",
+    "@leio-ai/leio-host-directory-picker-native": "workspace:^",
+    "@leio-ai/leio-host-plugin-inventory": "workspace:^",
+    "@leio-ai/leio-host-webserver": "workspace:^",
+    "@leio-ai/leio-message-feedback": "workspace:^",
+    "@leio-ai/leio-session-projection-cache": "workspace:^",
+    "@leio-ai/leio-session-log-export": "workspace:^",
+    "@leio-ai/leio-session-stats": "workspace:^",
+    "@leio-ai/leio-storage": "workspace:^",
+    "@leio-ai/leio-storage-domain": "workspace:^",
+    "@leio-ai/leio-storage-json": "workspace:^",
+    "@leio-ai/leio-workspace": "workspace:^",
+    "@deepseek-ai/schemastery": "workspace:^",
+    "commander": "^15.0.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis-plugin-loader": "workspace:^",
+    "@leio-ai/leio-shell-env": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis-plugin-loader": "workspace:^",
+    "@leio-ai/leio-shell-env": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

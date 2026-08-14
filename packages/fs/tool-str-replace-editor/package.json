@@ -1,0 +1,59 @@
+{
+  "name": "@leio-ai/leio-tool-str-replace-editor",
+  "description": "Model-facing view, create, literal replace, and line insert tool over the Harness filesystem service",
+  "version": "0.1.0-rc.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "directory": "packages/fs/tool-str-replace-editor"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@leio-ai/leio-fs": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-sandbox": "workspace:^",
+    "@leio-ai/leio-sandbox-policy": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "workspace:^"
+  },
+  "devDependencies": {
+    "@leio-ai/leio-agent": "workspace:^",
+    "@leio-ai/leio-fs": "workspace:^",
+    "@leio-ai/leio-fs-local": "workspace:^",
+    "@leio-ai/leio-fs-observation-policy": "workspace:^",
+    "@leio-ai/leio-fs-sandbox": "workspace:^",
+    "@leio-ai/leio-invariants": "workspace:^",
+    "@leio-ai/leio-llm": "workspace:^",
+    "@leio-ai/leio-sandbox": "workspace:^",
+    "@leio-ai/leio-sandbox-policy": "workspace:^",
+    "@leio-ai/leio-session": "workspace:^",
+    "@leio-ai/leio-system-prompt": "workspace:^",
+    "@leio-ai/leio-tools": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}
