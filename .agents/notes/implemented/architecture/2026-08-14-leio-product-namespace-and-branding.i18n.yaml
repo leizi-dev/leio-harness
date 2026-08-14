@@ -1,5 +1,6 @@
-# Bilingual-pair consistency record (docs/i18n/README.md): the content hashes of
-# both language files as of the last confirmed-consistent state. Git is unavailable
-# in this checkout, so these are calculated Git blob hashes without writing a ref.
-2026-08-14-leio-product-namespace-and-branding.md: 24105e5e51e35c3787b290c061da9027452e1d5c
-2026-08-14-leio-product-namespace-and-branding.zh.md: be6ed1e697575871ea129fd39d9ad5dfe2ce0f06
+# Bilingual-pair consistency record (docs/i18n/README.md): the git blob hash of each
+# side as of the last confirmed-consistent state. Both languages carry equal authority;
+# after editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-08-14-leio-product-namespace-and-branding.md
+2026-08-14-leio-product-namespace-and-branding.md: 7131b95fd5d6b235a89cc082533bfeb1f390644a
+2026-08-14-leio-product-namespace-and-branding.zh.md: 6e52976020bd830951bc6b1f1c4949393558f989

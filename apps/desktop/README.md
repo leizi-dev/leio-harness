@@ -14,6 +14,8 @@ pnpm run desktop:dist
 
 The command builds the workspace and Web frontend before writing the installer to `apps/desktop/dist/`. The installer targets Windows x64, installs for the current user, and creates Start menu and desktop shortcuts.
 
+The Windows application icon is a transparent circular crop aligned with the supplied artwork's inner circle, so the executable and shortcuts do not retain square image corners. The Web application keeps the original supplied artwork for its in-app brand surfaces.
+
 ## Run from source
 
 From the repository root, run:
