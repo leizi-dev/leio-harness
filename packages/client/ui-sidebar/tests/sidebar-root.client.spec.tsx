@@ -115,5 +115,6 @@ describe('SidebarRoot shell', () => {
     const b = mountShell({ collapsed: true })
     expect(b.regionOwner().wide).toBe(false)
     expect(screen.getByRole('button', { name: 'Open sidebar' })).toBeTruthy()
+    expect(document.querySelector('img[src="/leio-icon.png"]')).toBeTruthy()
   })
 })
