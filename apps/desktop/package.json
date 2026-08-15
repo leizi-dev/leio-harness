@@ -19,7 +19,8 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "dist:win": "electron-builder --win nsis --x64"
+    "dist:win": "electron-builder --win nsis --x64",
+    "dist:win:all": "electron-builder --win nsis portable --x64"
   },
   "dependencies": {
     "@deepseek-ai/cordis-plugin-group": "workspace:^",
@@ -67,16 +68,32 @@
       "package.json"
     ],
     "win": {
-      "target": "nsis",
-      "icon": "build/icon.png",
-      "artifactName": "Leio-Harness-Setup-${version}-${arch}.${ext}"
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
     },
     "nsis": {
+      "artifactName": "Leio-Harness-Setup-${version}-${arch}.${ext}",
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "Leio Harness"
+    },
+    "portable": {
+      "artifactName": "Leio-Harness-Portable-${version}-${arch}.${ext}"
     }
   }
 }

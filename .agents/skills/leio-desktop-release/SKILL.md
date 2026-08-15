@@ -52,9 +52,12 @@ Run only the checks relevant to the change, and report what actually ran:
 pnpm exec vitest run packages/boot/app-boot/tests/profile.spec.ts
 pnpm run build
 pnpm run desktop:dist
+pnpm --filter @leio-ai/leio-desktop dist:win:all
 ```
 
 The release artifact is normally `apps/desktop/dist/Leio-Harness-Setup-1.0.0-x64.exe`. Do not rename it by hand in a way that disagrees with `apps/desktop/package.json`. Keep `asar: true` and the unpack rules intentional; an installer containing an ASAR plus `app.asar.unpacked` is still a single self-contained NSIS installer.
+
+The optional `Leio-Harness-Portable-1.0.0-x64.exe` target is a comparison artifact, not automatic release evidence. Electron-builder Portable self-extracts the full application before the Electron process can start. With the current dependency tree, a clean Portable launch exceeded ten minutes without publishing a web port, while the NSIS-installed copy completed its boot checks. Do not retain or publish Portable until a clean launch completes the same HTTP, boot-manifest, title, and close checks.
 
 ## Release and handoff
 
