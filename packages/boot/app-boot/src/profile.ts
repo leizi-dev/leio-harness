@@ -227,7 +227,7 @@ export function healProfilesModuleFallback(installAnchor: string, home: string =
   const appManifest = JSON.parse(readFileSync(installAnchor, 'utf8')) as ProfileManifest
   const links = new Map<string, string>()
   /* v8 ignore next -- a real app manifest always declares its name */
-  if (appManifest.name !== undefined) links.set(appManifest.name, dirname(installAnchor))
+  if (appManifest.name !== undefined) links.set(appManifest.name, resolvePhysicalPackageDir(dirname(installAnchor)))
   // BFS over the resolvable dependency graph; the visited set is the link
   // map itself (first resolution wins, matching Node's own nearest-wins).
   const queue: { anchor: string; manifest: ProfileManifest }[] = [{ anchor: installAnchor, manifest: appManifest }]
@@ -324,9 +324,17 @@ function packageDirFromAnchor(anchor: string, packageName: string): string | und
   /* v8 ignore next */
   for (const searchPath of createRequire(anchor).resolve.paths(packageName) ?? []) {
     const candidate = join(searchPath, packageName)
-    if (existsSync(join(candidate, 'package.json'))) return candidate
+    if (existsSync(join(candidate, 'package.json'))) return resolvePhysicalPackageDir(candidate)
   }
   return undefined
+}
+
+/** Map an Electron ASAR package path to its unpacked on-disk copy when one exists. */
+function resolvePhysicalPackageDir(candidate: string): string {
+  const match = /^(.*\.asar)([\\/].*)$/i.exec(candidate)
+  if (match === null) return candidate
+  const unpacked = `${match[1]}.unpacked${match[2]}`
+  return existsSync(join(unpacked, 'package.json')) ? unpacked : candidate
 }
 
 /**

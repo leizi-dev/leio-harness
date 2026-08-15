@@ -52,6 +52,10 @@
     "appId": "ai.leio.harness",
     "productName": "Leio Harness",
     "asar": true,
+    "asarUnpack": [
+      "node_modules/**",
+      "**/node_modules/**"
+    ],
     "npmRebuild": false,
     "directories": {
       "output": "dist",

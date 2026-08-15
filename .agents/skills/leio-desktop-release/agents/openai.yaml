@@ -1,0 +1,4 @@
+interface:
+  display_name: "Leio Desktop Release"
+  short_description: "Package and validate the Leio Windows app"
+  default_prompt: "Use $leio-desktop-release to build and validate a Leio Harness Windows installer before delivery."

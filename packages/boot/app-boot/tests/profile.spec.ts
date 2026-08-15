@@ -256,6 +256,26 @@ describe('healProfilesModuleFallback', () => {
     expect(readlinkSync(join(fallback, 'dsh-app'))).toContain('app')
   })
 
+  it('links packages from Electron ASAR to their unpacked on-disk copies', () => {
+    const root = tmp()
+    const asarRoot = join(root, 'app.asar')
+    const unpackedRoot = join(root, 'app.asar.unpacked')
+    const appDir = join(asarRoot, 'node_modules', 'dsh-app')
+    const bundleDir = join(asarRoot, 'node_modules', 'bundle-a')
+    for (const dir of [appDir, bundleDir, join(unpackedRoot, 'node_modules', 'dsh-app'), join(unpackedRoot, 'node_modules', 'bundle-a')]) {
+      mkdirSync(dir, { recursive: true })
+    }
+    writeFileSync(join(appDir, 'package.json'), JSON.stringify({ name: 'dsh-app', dependencies: { 'bundle-a': '0.0.0' } }))
+    writeFileSync(join(bundleDir, 'package.json'), JSON.stringify({ name: 'bundle-a' }))
+    writeFileSync(join(unpackedRoot, 'node_modules', 'dsh-app', 'package.json'), '{}')
+    writeFileSync(join(unpackedRoot, 'node_modules', 'bundle-a', 'package.json'), '{}')
+    const home = tmp()
+    healProfilesModuleFallback(join(appDir, 'package.json'), home)
+    const fallback = join(home, 'profiles', 'node_modules')
+    expect(readlinkSync(join(fallback, 'dsh-app'))).toBe(join(unpackedRoot, 'node_modules', 'dsh-app'))
+    expect(readlinkSync(join(fallback, 'bundle-a'))).toBe(join(unpackedRoot, 'node_modules', 'bundle-a'))
+  })
+
   it('tolerates losing the concurrent-heal race to an identical link and rejects a different one', () => {
     // The EEXIST arm: a second process wrote the link between our lstat miss
     // and symlinkSync. Simulated by pre-creating the correct link and calling
