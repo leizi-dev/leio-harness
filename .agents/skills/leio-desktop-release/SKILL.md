@@ -26,12 +26,21 @@ Use this skill whenever a change must reach another Windows user as a working `L
    - a fresh install into a new directory under `E:\soft`;
    - the installed exe starts, serves HTTP 200, publishes a non-empty web boot manifest, and closes normally.
 3. Make the smallest fix. Do not solve a packaging failure by silently adding a key, changing the user profile, disabling startup errors, or weakening the loader.
-4. Run the focused test before packaging, then build the installer. Keep ASAR/installer compression enabled unless a verified Windows runtime limitation requires a documented fallback.
+4. Run the focused test before packaging, then build the installer. Keep the first-install NSIS package at `compression: "store"`: installation time is the primary requirement for this project. Do not trade that requirement for a smaller installer unless the user explicitly changes the priority.
 5. Install the exact generated installer into a new test directory. Never use an old installation as the only test because stale profile links and caches can hide packaging errors.
 6. Start the exe from that installation with an isolated `DSH_HOME` under `E:\soft`. Check the process tree and the listening port. Fetch `/` and parse `window.__DSH_BOOT__`.
 7. Require the installed response to have HTTP 200, at least one client entry, and the essential `@leio-ai/leio-client-modules` and `@leio-ai/leio-client-ui-layout` entries. Assert it does not contain `Failed to load plugins`.
 8. Verify the main window title is `Leio Harness`; request a normal close and wait for the main process to exit. Force-kill only leftover child processes from the smoke test after the graceful-close assertion.
 9. Record installer path, size, SHA-256, commit, tag, test commands, and the exact installation-test result. Do not publish a package with an untested install path.
+
+## Differential hot updates
+
+- A first-install NSIS package and a hot-update asset are different release artifacts. The first-install package may be about 140–150 MB because it is self-contained; it must not be used as the hot-update asset.
+- Hot updates are file-level delta patches. Generate the patch with `node scripts/build-desktop-delta.mjs`, passing the previous and new versions and only the changed packaged files. The current helper also updates the same-length desktop version field in `resources/app.asar` so the updater does not offer the same release repeatedly.
+- A text-only change must produce a small patch, normally KB-scale. A hot-update asset over 100 MB, or close to the full installer size, is a release blocker and means the full installer was selected accidentally.
+- Test the actual flow from a fresh installation of the previous version: download the signed delta, apply it to that installation, start the patched executable, fetch HTTP 200 and the plugin endpoint containing the new behavior, confirm the old behavior is absent, and check for no `Failed to load plugins` output. Testing only the new source build or a new 1.0.1 installation does not prove a hot update.
+- Put only the signed delta patch in `stable.json.asset` for the hot-update channel. Keep the speed-first full NSIS installer as a separate first-install download. The Gitee release attachment is the binary source; never commit either binary to Git.
+- Do not call a full installer or a full application ZIP a differential update. The previous failed release attempt uploaded the full installer, exceeded Gitee's attachment limit, and did not satisfy the user's hot-update requirement; preserve this distinction in future release work.
 
 ## Electron and ASAR module resolution
 

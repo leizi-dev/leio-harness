@@ -3,7 +3,7 @@
 /** English strings (the key-set source of truth for this pair). */
 export const en = {
   title: 'Application updates',
-  description: 'Check for a newer Leio Harness installer.',
+  description: 'Check for a newer Leio Harness update.',
   current: 'Current version: {version}',
   check: 'Check for updates',
   checking: 'Checking for updates…',
@@ -23,7 +23,7 @@ export type SettingsUpdateKey = keyof typeof en
 /** Chinese strings (same keys as {@link en}). */
 export const zh: { [Key in keyof typeof en]: string } = {
   title: '应用更新',
-  description: '检查是否有新的 Leio Harness 安装包。',
+  description: '检查是否有新的 Leio Harness 更新。',
   current: '当前版本：{version}',
   check: '检查更新',
   checking: '正在检查更新…',
