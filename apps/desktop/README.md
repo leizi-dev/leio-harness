@@ -12,9 +12,15 @@ From the repository root, run:
 pnpm run desktop:dist
 ```
 
-The command builds the workspace and Web frontend before writing the installer to `apps/desktop/dist/`. The installer targets Windows x64, installs for the current user, creates Start menu and desktop shortcuts, and stores the application resources in an ASAR archive to reduce installation file-copy overhead.
+The command builds the workspace and Web frontend before writing the installer to `apps/desktop/dist/`. The installer targets Windows x64, installs for the current user, creates Start menu and desktop shortcuts, and stores application resources in an ASAR archive. Product and vendor runtime packages plus native runtime packages are unpacked; the rest of the dependency tree stays in ASAR instead of being copied as individual installer files.
+
+The NSIS compression level is `store`: the installer is larger, but installation avoids the maximum solid-compression decompression cost and is the speed-first choice for this application.
 
 The Windows application icon, installer icon, shortcuts, and Web application icon all use the same full circular transparent artwork, so the executable and installed application do not retain square image corners.
+
+## Desktop updates
+
+Packaged builds check the signed Gitee update manifest ten seconds after startup. The General settings page also provides a manual check, download, and restart-install flow. Only the NSIS installer is accepted; the main process verifies the manifest signature, installer size, and SHA-256 digest before starting the replacement installer. The update channel and signing procedure live in [`updates/README.md`](../../updates/README.md).
 
 ## Run from source
 

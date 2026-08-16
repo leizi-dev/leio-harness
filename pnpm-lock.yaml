@@ -1418,6 +1418,9 @@ importers:
       '@leio-ai/leio-client-ui-settings-plugins':
         specifier: workspace:^
         version: link:../../client/ui-settings-plugins
+      '@leio-ai/leio-client-ui-settings-update':
+        specifier: workspace:^
+        version: link:../../client/ui-settings-update
       '@leio-ai/leio-client-ui-sidebar':
         specifier: workspace:^
         version: link:../../client/ui-sidebar
@@ -2689,6 +2692,39 @@ importers:
       '@leio-ai/leio-client-web-react':
         specifier: workspace:^
         version: link:../web-react
+      '@leio-ai/leio-invariants':
+        specifier: workspace:^
+        version: link:../../runtime-diagnostics/invariants
+      '@types/react':
+        specifier: ~18.3.1
+        version: 18.3.31
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+
+  packages/client/ui-settings-update:
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@leio-ai/leio-client-locale':
+        specifier: workspace:^
+        version: link:../locale
+      '@leio-ai/leio-client-runtime':
+        specifier: workspace:^
+        version: link:../runtime
+      '@leio-ai/leio-client-test-runtime':
+        specifier: workspace:^
+        version: link:../../test-support/client-runtime
+      '@leio-ai/leio-client-ui-primitives':
+        specifier: workspace:^
+        version: link:../ui-primitives
+      '@leio-ai/leio-client-ui-settings':
+        specifier: workspace:^
+        version: link:../ui-settings
+      '@leio-ai/leio-client-ui-slots':
+        specifier: workspace:^
+        version: link:../ui-slots
       '@leio-ai/leio-invariants':
         specifier: workspace:^
         version: link:../../runtime-diagnostics/invariants

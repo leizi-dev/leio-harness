@@ -189,6 +189,9 @@
     - id: ui-settings-general
       name: '@leio-ai/leio-client-ui-settings-general'
 
+    - id: ui-settings-update
+      name: '@leio-ai/leio-client-ui-settings-update'
+
     - id: ui-settings-models
       name: '@leio-ai/leio-client-ui-settings-models'
 

@@ -19,8 +19,7 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "dist:win": "electron-builder --win nsis --x64",
-    "dist:win:all": "electron-builder --win nsis portable --x64"
+    "dist:win": "electron-builder --win nsis --x64"
   },
   "dependencies": {
     "@deepseek-ai/cordis-plugin-group": "workspace:^",
@@ -54,10 +53,17 @@
     "productName": "Leio Harness",
     "asar": true,
     "asarUnpack": [
-      "node_modules/**",
-      "**/node_modules/**"
+      "node_modules/@deepseek-ai/**",
+      "node_modules/@leio-ai/**",
+      "node_modules/@img/sharp-win32-x64/**",
+      "node_modules/@koromix/koffi-win32-x64/**",
+      "node_modules/@vscode/ripgrep-win32-x64/**",
+      "node_modules/node-addon-require-builtin-win32-x64-msvc/**",
+      "node_modules/node-pty/**",
+      "node_modules/zod/**"
     ],
     "npmRebuild": false,
+    "compression": "store",
     "directories": {
       "output": "dist",
       "buildResources": "build"
@@ -68,20 +74,7 @@
       "package.json"
     ],
     "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64"
-          ]
-        },
-        {
-          "target": "portable",
-          "arch": [
-            "x64"
-          ]
-        }
-      ],
+      "target": "nsis",
       "icon": "build/icon.png"
     },
     "nsis": {
@@ -91,9 +84,6 @@
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "Leio Harness"
-    },
-    "portable": {
-      "artifactName": "Leio-Harness-Portable-${version}-${arch}.${ext}"
     }
   }
 }

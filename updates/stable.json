@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "channel": "stable",
+  "version": "1.0.0",
+  "mandatory": false,
+  "notes": "Leio Harness stable channel"
+}

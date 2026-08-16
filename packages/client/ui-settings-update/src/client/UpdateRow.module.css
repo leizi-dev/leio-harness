@@ -1,0 +1,52 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+}
+
+.rowText {
+  min-width: 0;
+}
+
+.title {
+  color: var(--ds-color-text-primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.description {
+  margin-top: 4px;
+  color: var(--ds-color-text-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.error {
+  color: var(--ds-color-danger);
+}
+
+.notes {
+  margin-top: 4px;
+  color: var(--ds-color-text-secondary);
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+
+.action {
+  flex: none;
+  min-width: 112px;
+  padding: 7px 12px;
+  border: 1px solid var(--ds-color-border-secondary);
+  border-radius: 7px;
+  background: var(--ds-color-fill-white);
+  color: var(--ds-color-text-primary);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.action:disabled {
+  cursor: default;
+  opacity: 0.55;
+}

@@ -1,13 +1,15 @@
 /** Electron shell for the local Leio Harness Web application. */
 
-import { join } from 'node:path'
-import { app, BrowserWindow, dialog, shell } from 'electron'
+import { dirname, join } from 'node:path'
+import { ipcMain, app, BrowserWindow, dialog, shell } from 'electron'
 import { loadLayeredEnv } from '@leio-ai/leio-app-boot'
 import { runProfile } from '@leio-ai/leio/profile-boot'
+import { DesktopUpdater, launchNsisInstaller } from './updater/updater.mjs'
 
 let mainWindow
 let harnessShutdown
 let quitAfterShutdown = false
+let desktopUpdater
 
 function describeError(error) {
   const own = error instanceof Error ? error.stack ?? error.message : String(error)
@@ -36,6 +38,7 @@ function createWindow(url) {
       contextIsolation: true,
       nodeIntegration: false,
       sandbox: true,
+      preload: join(app.getAppPath(), 'src', 'preload.cjs'),
     },
   })
   window.webContents.setWindowOpenHandler(({ url: target }) => {
@@ -55,6 +58,24 @@ function createWindow(url) {
   mainWindow = window
 }
 
+function setupUpdater() {
+  desktopUpdater = new DesktopUpdater({
+    currentVersion: app.getVersion(),
+    userDataPath: app.getPath('userData'),
+    canUpdate: app.isPackaged,
+    launchInstaller: installerPath => {
+      launchNsisInstaller(installerPath, dirname(process.execPath), () => { app.quit() })
+    },
+  })
+  ipcMain.handle('leio-updater:get-state', () => desktopUpdater.getState())
+  ipcMain.handle('leio-updater:check', (_event, force) => desktopUpdater.check(force === true))
+  ipcMain.handle('leio-updater:download', () => desktopUpdater.download())
+  ipcMain.handle('leio-updater:install', () => desktopUpdater.install())
+  desktopUpdater.subscribe(state => {
+    if (mainWindow !== undefined && !mainWindow.isDestroyed()) mainWindow.webContents.send('leio-updater:state', state)
+  })
+}
+
 async function startDesktop() {
   const runtime = await runProfile({
     environment: loadLayeredEnv('dsh'),
@@ -69,6 +90,7 @@ async function startDesktop() {
     throw new Error('Leio Harness Web server did not publish its listening port.')
   }
   createWindow(`http://127.0.0.1:${String(server.port)}`)
+  setTimeout(() => { void desktopUpdater?.check() }, 10_000)
 }
 
 if (!app.requestSingleInstanceLock()) {
@@ -86,7 +108,10 @@ if (!app.requestSingleInstanceLock()) {
     void harnessShutdown.shutdown(0).finally(() => { app.quit() })
   })
   app.on('window-all-closed', () => { app.quit() })
-  void app.whenReady().then(startDesktop).catch((error) => {
+  void app.whenReady().then(() => {
+    setupUpdater()
+    return startDesktop()
+  }).catch((error) => {
     const message = describeError(error)
     console.error(message)
     dialog.showErrorBox('Leio Harness failed to start', message)

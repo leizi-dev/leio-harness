@@ -1,0 +1,6 @@
+# Bilingual-pair consistency record (docs/i18n/README.md): the git blob hash of each
+# side as of the last confirmed-consistent state. Both languages carry equal authority;
+# after editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-08-15-desktop-nsis-updater.md
+2026-08-15-desktop-nsis-updater.md: ab5314291e265bd12d39f27ed2dcb101b3c4fa22
+2026-08-15-desktop-nsis-updater.zh.md: 6d5eb7b8d841284c448b63299bc53d31a6e47072

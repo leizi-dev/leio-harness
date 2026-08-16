@@ -71,6 +71,7 @@
     "@leio-ai/leio-client-ui-user-questions": "workspace:^",
     "@leio-ai/leio-client-ui-settings": "workspace:^",
     "@leio-ai/leio-client-ui-settings-general": "workspace:^",
+    "@leio-ai/leio-client-ui-settings-update": "workspace:^",
     "@leio-ai/leio-client-ui-sidebar": "workspace:^",
     "@leio-ai/leio-client-ui-skill": "workspace:^",
     "@leio-ai/leio-client-ui-input-trigger": "workspace:^",
