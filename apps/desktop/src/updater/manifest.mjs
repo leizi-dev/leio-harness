@@ -2,7 +2,7 @@ import { createPublicKey, verify } from 'node:crypto'
 
 /** The public manifest location used by packaged desktop builds. */
 export const UPDATE_MANIFEST_URL = process.env.LEIO_UPDATE_MANIFEST_URL
-  ?? 'https://gitee.com/chengsirs/leio-harness/raw/main/updates/stable.json'
+  ?? 'https://raw.githubusercontent.com/leizi-dev/leio-harness/main/updates/stable.json'
 
 /** Ed25519 SPKI public key for the Leio Harness update manifest. */
 const UPDATE_PUBLIC_KEY_DER_BASE64 = 'MCowBQYDK2VwAyEAwBjI3yPM3QnxPnm/ViNe1knyu9PK1NRWyKgAGn/q2Zs='
@@ -46,10 +46,10 @@ export function compareVersions(left, right) {
   return a[4].localeCompare(b[4])
 }
 
-function assertHttpsGiteeUrl(value, field) {
+function assertHttpsGithubUrl(value, field) {
   const url = new URL(value)
-  if (url.protocol !== 'https:' || (url.hostname !== 'gitee.com' && !url.hostname.endsWith('.gitee.com'))) {
-    throw new Error(`Update ${field} must use an HTTPS Gitee URL.`)
+  if (url.protocol !== 'https:' || (url.hostname !== 'github.com' && !url.hostname.endsWith('.github.com'))) {
+    throw new Error(`Update ${field} must use an HTTPS GitHub URL.`)
   }
   return url.toString()
 }
@@ -81,7 +81,7 @@ export function parseManifest(raw) {
     notes: value.notes,
     asset: {
       fileName: value.asset.fileName,
-      url: assertHttpsGiteeUrl(value.asset.url, 'asset URL'),
+      url: assertHttpsGithubUrl(value.asset.url, 'asset URL'),
       size: value.asset.size,
       sha256: value.asset.sha256.toLowerCase(),
     },
