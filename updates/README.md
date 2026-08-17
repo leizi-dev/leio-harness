@@ -17,9 +17,9 @@ The packaged desktop app reads `stable.json` from the repository's `main` branch
    node scripts/sign-desktop-update.mjs --manifest updates/stable.json --key E:/soft/leio-harness-update-signing/private-key.pem
    ```
 
-5. Create or replace the Gitee `v<version>` release, upload the delta patch as a release attachment, and copy its direct HTTPS Gitee URL into the manifest's `asset.url`. Keep the full NSIS installer available separately for first installation; never use it as the hot-update asset.
+5. Create or replace the GitHub `v<version>` release, upload the delta patch as a release attachment, and copy its direct HTTPS GitHub URL into the manifest's `asset.url`. Keep the full NSIS installer available separately for first installation; never use it as the hot-update asset.
 6. Commit `stable.json` and `stable.json.sig` to the repository after the exact release URL, size, and digest are final.
 
-The public key is embedded in the desktop source. Never commit or upload the private key. Do not commit the roughly 150 MB first-install package in Git. The Gitee release attachment is the binary source, but only the small delta patch belongs in the hot-update manifest. The bootstrap `1.0.0` manifest has no asset because existing `1.0.0` installations predate this updater; the first updater-enabled release must be distributed once manually and use a higher version.
+The public key is embedded in the desktop source. Never commit or upload the private key. Do not commit the roughly 150 MB first-install package in Git. The GitHub release attachment is the binary source, but only the small delta patch belongs in the hot-update manifest. The bootstrap `1.0.0` manifest has no asset because existing `1.0.0` installations predate this updater; the first updater-enabled release must be distributed once manually and use a higher version.
 
 The formal desktop target is the NSIS installer. Portable output is not part of the release channel because it cannot safely replace a running installed application.
