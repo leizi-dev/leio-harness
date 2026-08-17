@@ -11,7 +11,7 @@ This reference lists the maintained product differences between Leio Harness and
 | Upstream branch | `master` | `main` |
 | Desktop application | No Electron `apps/desktop` tree | Self-contained Windows Electron application |
 | Installer | Upstream release process | NSIS installer with `compression: store` for fast first install |
-| Update channel | Upstream default | Gitee manifest and file-level differential updates |
+| Update channel | Upstream default | GitHub manifest and file-level differential updates |
 | Branding | DeepSeek assets and copy | Circular Leio asset in the executable, installer, shortcut, and UI |
 | Product copy | Upstream English and Chinese copy | Leio product name and customized startup text |
 | LLM package | `@deepseek-ai/dsh-llm` | `@leio-ai/leio-llm` |
