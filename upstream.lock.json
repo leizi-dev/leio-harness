@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/deepseek-ai/deepseek-harness.git",
+  "branch": "master",
+  "commit": "47f943859bef60e4160492346772ded9b24f765a",
+  "sourceCommitUrl": "https://github.com/deepseek-ai/deepseek-harness/commit/47f943859bef60e4160492346772ded9b24f765a",
+  "leioCommit": "963d91923edb46b8caeca7910045d6e8516cb9d3",
+  "leioVersion": "1.0.0",
+  "syncedAt": "2026-08-17",
+  "syncMode": "snapshot-verified",
+  "note": "The upstream rc.5/public package metadata is already present in the Leio tree; the Leio root version remains independent."
+}
