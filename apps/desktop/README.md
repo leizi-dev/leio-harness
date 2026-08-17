@@ -2,36 +2,30 @@
 
 English | [中文](README.zh.md)
 
-This application packages the local Leio Harness Web profile in an Electron window and produces a Windows NSIS installer. It starts the Harness in the Electron main process on an operating-system-assigned loopback port, then disposes the complete Cordis tree before Electron exits.
+The desktop application runs the local Leio Harness Web profile in an Electron window and produces a Windows x64 NSIS installer. The Electron main process starts the local Harness on an operating-system-assigned loopback port and releases it during application shutdown.
 
-## Build the installer
+## Build
 
-From the repository root, run:
-
-```sh
-pnpm run desktop:dist
-```
-
-The command builds the workspace and Web frontend before writing the installer to `apps/desktop/dist/`. The installer targets Windows x64, installs for the current user, creates Start menu and desktop shortcuts, and stores application resources in an ASAR archive. Product and vendor runtime packages plus native runtime packages are unpacked; the rest of the dependency tree stays in ASAR instead of being copied as individual installer files.
-
-The NSIS compression level is `store`: the installer is larger, but installation avoids the maximum solid-compression decompression cost and is the speed-first choice for this application.
-
-The Windows application icon, installer icon, shortcuts, and Web application icon all use the same full circular transparent artwork, so the executable and installed application do not retain square image corners.
-
-## Desktop updates
-
-Packaged builds check the signed GitHub update manifest ten seconds after startup. The General settings page also provides a manual check, download, and restart-install flow. The first-install NSIS package remains speed-first with `store` compression; update releases use a small signed NSIS delta patch containing only changed installed files. The main process verifies the manifest signature, patch size, and SHA-256 digest before starting the replacement patch. The update channel and signing procedure live in [`updates/README.md`](../../updates/README.md).
-
-## Run from source
-
-From the repository root, run:
+From the repository root:
 
 ```sh
 pnpm run desktop:start
 ```
 
-The desktop shell uses the same Harness home, profiles, settings, credentials, sessions, and workspace data as `pnpm dsh web`. Model requests still require a provider credential configured through the existing settings or environment variables; credentials are never embedded in the application package.
+This builds the libraries and Web frontend before starting the desktop shell. To create the Windows installer, run:
 
-## Security and lifecycle
+```sh
+pnpm run desktop:dist
+```
 
-The BrowserWindow disables Node integration, enables context isolation and renderer sandboxing, and opens non-local HTTP links in the system browser. Only one desktop instance runs at a time. Closing the application requests the existing bounded Harness shutdown before Electron exits.
+The installer is written to `apps/desktop/dist/`. It uses `store` compression to prioritize installation time, creates desktop and Start menu shortcuts, and keeps application resources in an ASAR archive with required native/runtime dependencies unpacked.
+
+The executable, installer, shortcuts, and application UI use the circular transparent Leio icon from `apps/desktop/build/icon.png`.
+
+## Updates
+
+The packaged application reads the signed GitHub update manifest after startup. The General settings page provides a manual check, download, and restart-install flow. The `v1.0.1` GitHub release currently provides the tested full installer for manual installation. A small update artifact must be generated, signed, applied to a fresh previous-version installation, and smoke-tested before it is added to the automatic update manifest.
+
+## Configuration
+
+Model provider credentials are configured through the application settings or supported environment variables. Credentials are not embedded in the application package.
