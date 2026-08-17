@@ -20,7 +20,7 @@ The Windows application icon, installer icon, shortcuts, and Web application ico
 
 ## Desktop updates
 
-Packaged builds check the signed Gitee update manifest ten seconds after startup. The General settings page also provides a manual check, download, and restart-install flow. The first-install NSIS package remains speed-first with `store` compression; update releases use a small signed NSIS delta patch containing only changed installed files. The main process verifies the manifest signature, patch size, and SHA-256 digest before starting the replacement patch. The update channel and signing procedure live in [`updates/README.md`](../../updates/README.md).
+Packaged builds check the signed GitHub update manifest ten seconds after startup. The General settings page also provides a manual check, download, and restart-install flow. The first-install NSIS package remains speed-first with `store` compression; update releases use a small signed NSIS delta patch containing only changed installed files. The main process verifies the manifest signature, patch size, and SHA-256 digest before starting the replacement patch. The update channel and signing procedure live in [`updates/README.md`](../../updates/README.md).
 
 ## Run from source
 
