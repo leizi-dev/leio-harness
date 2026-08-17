@@ -21,7 +21,7 @@ describe('desktop update manifest', () => {
     expect(manifest.asset).toBeUndefined()
   })
 
-  it('rejects non-Gitee installer URLs before download', () => {
+  it('rejects non-GitHub installer URLs before download', () => {
     expect(() => parseManifest(JSON.stringify({
       schemaVersion: 1,
       channel: 'stable',
@@ -34,7 +34,7 @@ describe('desktop update manifest', () => {
         size: 1,
         sha256: '0'.repeat(64),
       },
-    }))).toThrow('HTTPS Gitee URL')
+    }))).toThrow('HTTPS GitHub URL')
   })
 })
 
