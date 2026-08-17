@@ -11,7 +11,7 @@
 | Upstream branch | `master` | `main` |
 | Desktop application | 没有 Electron `apps/desktop` 目录 | 自包含的 Windows Electron 应用 |
 | Installer | 上游发布流程 | 首次安装使用 `compression: store` 的快速 NSIS 安装包 |
-| Update channel | 上游默认方式 | Gitee 清单和文件级差分更新 |
+| Update channel | 上游默认方式 | GitHub 清单和文件级差分更新 |
 | Branding | DeepSeek 图片和文案 | 可执行文件、安装包、快捷方式和界面统一使用圆形 Leio 图片 |
 | Product copy | 上游中英文文案 | Leio 产品名称和定制启动文案 |
 | LLM package | `@deepseek-ai/dsh-llm` | `@leio-ai/leio-llm` |
