@@ -2,70 +2,49 @@
 
 [English](README.md) | 中文
 
-Leio Harness（`dsh`）是开源 agent harness（智能体框架）。
+Leio Harness 是基于 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 改造的 Windows 桌面 AI 工作台。本仓库包含 Leio 产品名称、`@leio-ai/leio-*` 包名、Electron 桌面壳、Web UI、更新器，以及在源项目之上长期维护的项目差异。
 
-它采用**一切皆插件**的架构，并由 [Cordis](https://github.com/cordiverse/cordis) 驱动，其设计参见论文 [_A Programming Paradigm for Spatiotemporal Composability_](https://github.com/cordiverse/paper)。
+## 下载 Windows 应用
 
-## 开发者预览
+当前经过测试的版本是 [Leio Harness 1.0.1](https://github.com/leizi-dev/leio-harness/releases/tag/v1.0.1)。
 
-Leio Harness 目前处于 _开发者预览_ 阶段，正在快速迭代。**未来将出现破坏兼容性的变更。**
+下载 [Windows x64 安装包](https://github.com/leizi-dev/leio-harness/releases/download/v1.0.1/Leio-Harness-Setup-1.0.1-x64.exe)，运行安装程序，然后从桌面或开始菜单启动 **Leio Harness**。安装包使用优先缩短安装时间的 `store` 压缩模式；安装包体积会大于高压缩版本，但安装时不需要承担对应的固实解压成本。
+
+应用程序不包含 API key。请在应用设置或支持的环境变量中配置所需的大模型提供方。不要把 key 提交到仓库，也不要放入发行包。
 
 ## 运行
 
-### 通过 `npm` 运行
-
-安装 `Node.js`，然后运行：
-
-```sh
-npx @leio-ai/leio web
-```
-
-该命令会启动 Web UI，默认地址为 `http://127.0.0.1:3080`。详见 [Web UI 指南](docs/user/guide/index.md)。
-
 ### 从源码运行
 
-如需从仓库源码运行：
+环境要求：Node.js `^22.19.0 || >=24.0.0` 和 pnpm `11.7.0`。
+
+在仓库根目录运行：
 
 ```sh
-git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
 pnpm install
-pnpm run build
-pnpm dsh web
+pnpm run desktop:start
 ```
 
-## 社区与支持
+构建 Windows 安装包：
 
-- 欢迎通过 [GitHub Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions) 提交反馈或 bug 报告。
-- 为你的插件仓库添加 [`dsh-plugin`](https://github.com/topics/dsh-plugin) 话题，便于被发现。
-- 欢迎加入 Leio Harness 企微群：扫码添加企微小助手并填写入群问卷，完成后小助手会邀请你入群。
+```sh
+pnpm run desktop:dist
+```
 
-<table>
-  <thead>
-    <tr>
-      <th align="center">企微小助手</th>
-      <th align="center">入群问卷</th>
-      <th align="center">微信公众号</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center"><img src="assets/community-wecom-assistant.png" alt="Leio Harness 企微小助手二维码" width="180" height="180"></td>
-      <td align="center"><a href="https://trtgsjkv6r.feishu.cn/share/base/form/shrcnIt5twSVdLGD52KJBckGCgg"><img src="assets/community-wecom-survey.png" alt="Leio Harness 入群问卷二维码" width="180" height="180"></a></td>
-      <td align="center"><img src="assets/community-wechat-official-account.png" alt="Leio Harness 团队微信公众号二维码" width="180" height="180"></td>
-    </tr>
-  </tbody>
-</table>
+安装包会写入 `apps/desktop/dist/`。桌面构建使用圆形透明的磊图标，应用程序、安装包、快捷方式和应用界面使用同一套图标资源。
 
-## 参与贡献
+## 更新
 
-参见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+桌面应用从 GitHub 读取带签名的更新清单，并提供自动更新和手动更新入口。发行文件发布在 [GitHub Releases 页面](https://github.com/leizi-dev/leio-harness/releases)。
 
-## 开发
+`v1.0.1` 发行版是经过测试、用于手动安装的完整安装包。现有安装的签名更新清单仍保持引导版本，直到单独生成、签名并完成冒烟测试的小型更新包可用；完整安装包不会被伪装成差分热更新包。
 
-请先阅读[开发指南](docs/development.md)与[架构文档](docs/architecture.md)。
+## 项目文档
 
-面向 agent：请遵循 [AGENTS.md](AGENTS.md)。
+- [开发指南](docs/development.md)
+- [架构说明](docs/architecture.md)
+- [Leio 与 DeepSeek Harness 的差异](docs/leio-vs-upstream.md)
+- [桌面发布与更新流程](updates/README.md)
 
 ## 许可证
 
