@@ -81,7 +81,7 @@ export class DesktopUpdater {
   }
 
   /**
-   * Check the signed Gitee manifest.
+   * Check the signed GitHub manifest.
    * @param {boolean} _force - Reserved for the manual-check contract.
    * @returns {Promise<object>} New updater state.
    */
