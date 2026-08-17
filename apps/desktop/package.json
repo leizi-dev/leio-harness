@@ -75,7 +75,8 @@
     ],
     "win": {
       "target": "nsis",
-      "icon": "build/icon.png"
+      "icon": "build/icon.png",
+      "signExecutable": false
     },
     "nsis": {
       "artifactName": "Leio-Harness-Setup-${version}-${arch}.${ext}",
