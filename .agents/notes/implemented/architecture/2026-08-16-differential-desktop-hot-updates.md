@@ -6,7 +6,7 @@ English | [中文](2026-08-16-differential-desktop-hot-updates.zh.md)
 
 ## Problem
 
-The self-contained Windows NSIS package is large because it includes the application runtime, but a hot update that changes a few UI strings must not redownload that package. Treating the first-install package as the update asset made the update larger than necessary and could exceed Gitee attachment limits.
+The self-contained Windows NSIS package is large because it includes the application runtime, but a hot update that changes a few UI strings must not redownload that package. Treating the first-install package as the update asset made the update larger than necessary and could exceed GitHub release asset limits.
 
 ## Decision
 
@@ -16,7 +16,7 @@ The release manifest points to the delta asset, not the first-install package. A
 
 ## Alternatives considered
 
-- **Publish the full NSIS installer as the hot-update asset.** Rejected: it redownloads unchanged runtime files, violates the requested file-level update behavior, and can exceed Gitee's attachment limit.
+- **Publish the full NSIS installer as the hot-update asset.** Rejected: it redownloads unchanged runtime files, violates the requested file-level update behavior, and can exceed GitHub's release asset limit.
 - **Publish a full application ZIP.** Rejected: it has the same unnecessary payload and needs a separate replacement protocol, while the existing updater already launches verified NSIS executables.
 - **Replace plugins in the running process.** Rejected: it complicates rollback and can leave a mixed-version runtime; the signed restart-time file patch keeps replacement atomic at the process boundary.
 
