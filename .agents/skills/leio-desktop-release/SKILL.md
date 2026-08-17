@@ -39,8 +39,8 @@ Use this skill whenever a change must reach another Windows user as a working `L
 - Hot updates are file-level delta patches. Generate the patch with `node scripts/build-desktop-delta.mjs`, passing the previous and new versions and only the changed packaged files. The current helper also updates the same-length desktop version field in `resources/app.asar` so the updater does not offer the same release repeatedly.
 - A text-only change must produce a small patch, normally KB-scale. A hot-update asset over 100 MB, or close to the full installer size, is a release blocker and means the full installer was selected accidentally.
 - Test the actual flow from a fresh installation of the previous version: download the signed delta, apply it to that installation, start the patched executable, fetch HTTP 200 and the plugin endpoint containing the new behavior, confirm the old behavior is absent, and check for no `Failed to load plugins` output. Testing only the new source build or a new 1.0.1 installation does not prove a hot update.
-- Put only the signed delta patch in `stable.json.asset` for the hot-update channel. Keep the speed-first full NSIS installer as a separate first-install download. The Gitee release attachment is the binary source; never commit either binary to Git.
-- Do not call a full installer or a full application ZIP a differential update. The previous failed release attempt uploaded the full installer, exceeded Gitee's attachment limit, and did not satisfy the user's hot-update requirement; preserve this distinction in future release work.
+- Put only the signed delta patch in `stable.json.asset` for the hot-update channel. Keep the speed-first full NSIS installer as a separate first-install download. The GitHub release attachment is the binary source; never commit either binary to Git.
+- Do not call a full installer or a full application ZIP a differential update. The previous failed release attempt uploaded the full installer, exceeded the release attachment limit, and did not satisfy the user's hot-update requirement; preserve this distinction in future release work.
 
 ## Electron and ASAR module resolution
 
@@ -79,6 +79,8 @@ When handing off, state:
 - the keyless/model status (do not imply model calls were tested without a key);
 - the commit and tag updated;
 - any cleanup that was intentionally left because it belonged to the user's existing files.
+
+If electron-builder cannot reach GitHub to download a build tool, do not publish an existing file under a new name. First check the local Electron and electron-builder caches. If an offline build is still blocked by Windows signing-tool discovery and no signing certificate is configured, use `signExecutable: false`; if resource editing itself remains blocked, build the prepackaged directory with `signAndEditExecutable: false`, write the approved ICO into the packaged EXE with the local resource editor, and build the NSIS artifact with `--prepackaged`. Restore the source configuration before committing and verify the embedded icon and the final installer timestamp/hash.
 
 ## Failure patterns from prior releases
 
