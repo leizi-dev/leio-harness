@@ -4,15 +4,19 @@ Status: implemented
 
 English | [中文](2026-08-15-desktop-nsis-updater.zh.md)
 
+## Problem
+
+The desktop release needs a signed restart-time update channel that is hosted with the public Leio repository while preserving the speed-first first-install package.
+
 ## Decision
 
-The desktop distribution has one formal target: a Windows x64 NSIS installer. The packaged Electron main process checks a Gitee-hosted stable manifest after startup and exposes check, download, and install actions through a narrow preload bridge. The Web settings bundle contributes the user-facing row only when that bridge exists, so browser deployments keep the same surface without desktop process access.
+The desktop distribution has one formal target: a Windows x64 NSIS installer. The packaged Electron main process checks a GitHub-hosted stable manifest after startup and exposes check, download, and install actions through a narrow preload bridge. The Web settings bundle contributes the user-facing row only when that bridge exists, so browser deployments keep the same surface without desktop process access.
 
 The manifest is canonicalized and verified with an embedded Ed25519 public key. Downloads are written to a per-version user-data directory, then checked for the declared size and SHA-256 digest before the detached installer is launched after the current app quits.
 
 ## Alternatives considered
 
-`electron-updater` was not selected because this repository already owns a Gitee release layout rather than a provider-backed update service, and the updater must accept only the repository's signed manifest. An in-place ASAR or Portable replacement was rejected because a running Electron process cannot safely replace its own resources and the prior Portable build was not a reliable release target.
+`electron-updater` was not selected because this repository already owns a GitHub release layout rather than a provider-backed update service, and the updater must accept only the repository's signed manifest. An in-place ASAR or Portable replacement was rejected because a running Electron process cannot safely replace its own resources and the prior Portable build was not a reliable release target.
 
 ## Consequences
 
