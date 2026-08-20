@@ -2,5 +2,5 @@
 # side as of the last confirmed-consistent state. Both languages carry equal authority;
 # after editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-06-21-subagent-capability-seam.md
-2026-06-21-subagent-capability-seam.md: fa3b4f570bfccdc849a38b3eda16c1c8dd7b1827
-2026-06-21-subagent-capability-seam.zh.md: b25fe64377f98af92dbccb87f755627926975ef2
+2026-06-21-subagent-capability-seam.md: 032c494ad96941423485a9fbae7d22d3bc10f9a1
+2026-06-21-subagent-capability-seam.zh.md: a0beba716b411e14b340ac6eeb80def7e766b2f7

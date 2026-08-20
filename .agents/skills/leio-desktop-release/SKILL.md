@@ -14,7 +14,7 @@ Use this skill whenever a change must reach another Windows user as a working `L
 - Preserve the requested application version. If the user explicitly asks to replace the existing `v1.0.0` release, update the same tag only after the new commit and installer have passed the full smoke test.
 - Never put model API keys in source, package metadata, installer files, logs, or the release asset. If a real model request is required and no key is available, stop and ask the user.
 - Use the approved circular transparent brand image consistently for the executable icon, installer icon, desktop shortcut, and any UI image derived from the brand asset. Verify the final `.exe` icon rather than trusting source filenames.
-- Keep the Windows installer self-contained. The recipient must not need Node.js, pnpm, a checkout, Visual Studio, or a separately installed runtime.
+- The recipient must not need Node.js, pnpm, a checkout, Visual Studio, or a separately installed runtime. Electron provides Node. When the approved first-launch runtime cache is used, the matching immutable dependency ZIP is a required GitHub Release attachment and the first launch needs network access.
 
 ## Required workflow
 
@@ -28,7 +28,7 @@ Use this skill whenever a change must reach another Windows user as a working `L
 3. Make the smallest fix. Do not solve a packaging failure by silently adding a key, changing the user profile, disabling startup errors, or weakening the loader.
 4. Run the focused test before packaging, then build the installer. Keep the first-install NSIS package at `compression: "store"`: installation time is the primary requirement for this project. Do not trade that requirement for a smaller installer unless the user explicitly changes the priority.
 5. Install the exact generated installer into a new test directory. Never use an old installation as the only test because stale profile links and caches can hide packaging errors.
-6. Start the exe from that installation with an isolated `DSH_HOME` under `E:\soft`. Check the process tree and the listening port. Fetch `/` and parse `window.__DSH_BOOT__`.
+6. Start the exe from that installation with an isolated `DSH_HOME` and an empty isolated Electron user-data directory under `E:\soft`. For the runtime-cache design, prove the first launch downloads, validates, and extracts the matching Release ZIP; then start it again and prove the second launch reuses the cache without another download. Check the process tree and the listening port. Fetch `/` and parse `window.__DSH_BOOT__`.
 7. Require the installed response to have HTTP 200, at least one client entry, and the essential `@leio-ai/leio-client-modules` and `@leio-ai/leio-client-ui-layout` entries. Assert it does not contain `Failed to load plugins`.
 8. Verify the main window title is `Leio Harness`; request a normal close and wait for the main process to exit. Force-kill only leftover child processes from the smoke test after the graceful-close assertion.
 9. Record installer path, size, SHA-256, commit, tag, test commands, and the exact installation-test result. Do not publish a package with an untested install path.
@@ -43,6 +43,15 @@ Use this skill whenever a change must reach another Windows user as a working `L
 - Do not call a full installer or a full application ZIP a differential update. The previous failed release attempt uploaded the full installer, exceeded the release attachment limit, and did not satisfy the user's hot-update requirement; preserve this distinction in future release work.
 
 ## Electron and ASAR module resolution
+
+### First-launch runtime cache
+
+The Electron ASAR must contain only the desktop shell, bootstrap UI, and immutable runtime manifest; Electron itself supplies Node. The manifest names ordered HTTPS sources for one ZIP with exact filename, byte count, and SHA-256: GitHub Release is always first and the domestic OSS redirect is used only after that request fails or does not respond within the bounded first-response timeout. The timer must end when response headers arrive, never during a healthy ZIP stream. Before importing any Leio package, the shell must show progress, download the ZIP into application user data, verify length and SHA-256, extract into a staging directory, verify `@leio-ai/leio`, write a version/hash marker, then atomically rename the staging directory into the cache. A valid marker makes later launches offline and download-free.
+
+- Build the runtime ZIP from the full production dependency closure, not `app.asar.unpacked` and not a hand-picked package list. A screenshot containing a missing transitive package such as `js-yaml` is a release blocker.
+- pnpm deploy output uses Windows links. The released ZIP must dereference every link into real files before extraction; otherwise `tar.exe` can restore links that fail on another computer. Verify after extracting the ZIP to a fresh directory that `@leio-ai/leio-app-boot`, `@leio-ai/leio/profile-boot`, and a transitive package resolve successfully through a fresh `runtime-anchor.cjs`.
+- Keep the NSIS installer at `compression: "store"`. Runtime compression or download behavior must not make installation slower; its cost belongs only to the first networked application start.
+- Never publish the installer before its referenced runtime asset. The installer manifest URL, runtime asset filename, size, and SHA-256 must match the uploaded ZIP exactly.
 
 The profile boot maintains `$DSH_HOME/profiles/node_modules` with Windows links to the installation dependency closure. A Junction cannot point to a virtual `resources\app.asar\...` path. When ASAR is used:
 
@@ -71,6 +80,10 @@ The optional `Leio-Harness-Portable-1.0.0-x64.exe` target is a comparison artifa
 ## Release and handoff
 
 Before publishing, inspect the diff and ensure no credentials, temporary smoke data, stale build logs, or unrelated files are staged. Commit the source and packaging fix first. Create or replace the requested release tag only after the installed smoke test passes. Upload the exact tested installer and include a short Chinese release title and description when the user asks for Gitee/Git release text.
+
+## Download endpoint continuity
+
+Treat every installer URL that has already been published as a permanent public entry point. Never replace, remove, or repurpose it when adding a runtime mirror or changing versions. The published installer endpoint must redirect to the configured latest installer, including when its path contains an older version number. A fixed runtime ZIP endpoint is a separate internal client path; it must not displace the public installer URL. Verify both endpoints after deployment and document the stable installer URL in the release notes.
 
 When handing off, state:
 

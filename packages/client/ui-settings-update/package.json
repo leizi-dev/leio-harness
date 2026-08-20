@@ -1,7 +1,7 @@
 {
   "name": "@leio-ai/leio-client-ui-settings-update",
   "description": "Desktop update status and manual update controls in General settings",
-  "version": "0.1.0-rc.5",
+  "version": "0.1.0-rc.7",
   "publishConfig": {
     "access": "public"
   },

@@ -1,7 +1,7 @@
 {
   "name": "@leio-ai/leio-web-frontend",
   "description": "Web application entry: vite build over the @leio-ai/leio-client-web shell library; dist/ served by apps/cli's dsh web",
-  "version": "0.1.0-rc.5",
+  "version": "0.1.0-rc.7",
   "publishConfig": {
     "access": "public"
   },

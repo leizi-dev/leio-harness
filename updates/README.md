@@ -6,7 +6,7 @@ The packaged desktop application reads `stable.json` and `stable.json.sig` from 
 
 ## Current release
 
-[Leio Harness 1.0.1](https://github.com/leizi-dev/leio-harness/releases/tag/v1.0.1) is the tested Windows x64 full installer. It is a manual-installation asset and is not used as a differential update.
+[Leio Harness 1.0.2](https://github.com/leizi-dev/leio-harness/releases/tag/v1.0.2) is the tested Windows x64 full installer. It is a manual-installation asset and is not used as a differential update.
 
 The bootstrap manifest remains at `1.0.0` until a small update artifact is generated and signed. This prevents the full installer from being downloaded as a hot update and preserves the installation-time and update-size requirements.
 

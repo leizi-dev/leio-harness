@@ -1,11 +1,11 @@
 {
   "repository": "https://github.com/deepseek-ai/deepseek-harness.git",
   "branch": "master",
-  "commit": "47f943859bef60e4160492346772ded9b24f765a",
-  "sourceCommitUrl": "https://github.com/deepseek-ai/deepseek-harness/commit/47f943859bef60e4160492346772ded9b24f765a",
-  "leioCommit": "963d91923edb46b8caeca7910045d6e8516cb9d3",
-  "leioVersion": "1.0.0",
-  "syncedAt": "2026-08-17",
+  "commit": "99f6f02fecdb7dff40c3fbc9470f5907c29f74ca",
+  "sourceCommitUrl": "https://github.com/deepseek-ai/deepseek-harness/commit/99f6f02fecdb7dff40c3fbc9470f5907c29f74ca",
+  "leioCommit": "8abdca7",
+  "leioVersion": "1.0.2",
+  "syncedAt": "2026-08-18",
   "syncMode": "snapshot-verified",
-  "note": "The upstream rc.5/public package metadata is already present in the Leio tree; the Leio root version remains independent."
+  "note": "The upstream rc.7 release commit changes package metadata from rc.6 to rc.7; no runtime source or asset changes were introduced by that commit. Leio package names, desktop packaging, branding, and independent product version remain in force."
 }

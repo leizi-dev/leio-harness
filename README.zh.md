@@ -6,9 +6,9 @@ Leio Harness 是基于 [DeepSeek Harness](https://github.com/deepseek-ai/deepsee
 
 ## 下载 Windows 应用
 
-当前经过测试的版本是 [Leio Harness 1.0.1](https://github.com/leizi-dev/leio-harness/releases/tag/v1.0.1)。
+当前经过测试的版本是 [Leio Harness 1.0.2](https://github.com/leizi-dev/leio-harness/releases/tag/v1.0.2)。
 
-下载 [Windows x64 安装包](https://github.com/leizi-dev/leio-harness/releases/download/v1.0.1/Leio-Harness-Setup-1.0.1-x64.exe)，运行安装程序，然后从桌面或开始菜单启动 **Leio Harness**。安装包使用优先缩短安装时间的 `store` 压缩模式；安装包体积会大于高压缩版本，但安装时不需要承担对应的固实解压成本。
+下载 [Windows x64 安装包](https://github.com/leizi-dev/leio-harness/releases/download/v1.0.2/Leio-Harness-Setup-1.0.2-x64.exe)，运行安装程序，然后从桌面或开始菜单启动 **Leio Harness**。安装包使用优先缩短安装时间的 `store` 压缩模式；安装包体积会大于高压缩版本，但安装时不需要承担对应的固实解压成本。
 
 应用程序不包含 API key。请在应用设置或支持的环境变量中配置所需的大模型提供方。不要把 key 提交到仓库，也不要放入发行包。
 
@@ -37,7 +37,7 @@ pnpm run desktop:dist
 
 桌面应用从 GitHub 读取带签名的更新清单，并提供自动更新和手动更新入口。发行文件发布在 [GitHub Releases 页面](https://github.com/leizi-dev/leio-harness/releases)。
 
-`v1.0.1` 发行版是经过测试、用于手动安装的完整安装包。现有安装的签名更新清单仍保持引导版本，直到单独生成、签名并完成冒烟测试的小型更新包可用；完整安装包不会被伪装成差分热更新包。
+`v1.0.2` 发行版是经过测试、用于手动安装的完整安装包。现有安装的签名更新清单仍保持引导版本，直到单独生成、签名并完成冒烟测试的小型更新包可用；完整安装包不会被伪装成差分热更新包。
 
 ## 项目文档
 

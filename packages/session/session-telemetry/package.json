@@ -1,7 +1,7 @@
 {
   "name": "@leio-ai/leio-session-telemetry",
   "description": "SessionTelemetryBackend seam for the Leio Harness: session-event capture, projection, redaction, and handoff to a reporting backend",
-  "version": "0.1.0-rc.5",
+  "version": "0.1.0-rc.7",
   "publishConfig": {
     "access": "public"
   },

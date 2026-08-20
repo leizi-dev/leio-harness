@@ -15,7 +15,7 @@ This reference lists the maintained product differences between Leio Harness and
 | Branding | DeepSeek assets and copy | Circular Leio asset in the executable, installer, shortcut, and UI |
 | Product copy | Upstream English and Chinese copy | Leio product name and customized startup text |
 | LLM package | `@deepseek-ai/dsh-llm` | `@leio-ai/leio-llm` |
-| Release version | Upstream prerelease line | Independent Leio SemVer tags such as `v1.0.0` and `v1.0.1` |
+| Release version | Upstream prerelease line | Independent Leio SemVer tags such as `v1.0.0` and `v1.0.2` |
 | Acceptance target | Source build and upstream checks | Fresh installed executable, HTTP boot, plugin activation, update flow, and graceful close |
 
 The namespace, desktop, branding, installer, update, and release differences are intentional and must survive an upstream sync. Generic capability changes remain candidates for import after focused verification.

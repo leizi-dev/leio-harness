@@ -1,7 +1,7 @@
 {
   "name": "@leio-ai/leio-desktop",
   "description": "Electron desktop shell and Windows installer for Leio Harness",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "publishConfig": {
     "access": "public"
   },
@@ -71,7 +71,8 @@
     "files": [
       "src/**/*",
       "build/icon.png",
-      "package.json"
+      "package.json",
+      "!node_modules/**/*"
     ],
     "win": {
       "target": "nsis",

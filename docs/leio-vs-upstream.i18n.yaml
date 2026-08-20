@@ -2,5 +2,5 @@
 # side as of the last confirmed-consistent state. Both languages carry equal authority;
 # after editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/leio-vs-upstream.md
-leio-vs-upstream.md: d6d621178f64b7d878700b3bed07b1bcef773b70
-leio-vs-upstream.zh.md: fdc3fa625c19c5d59143dc1887c27701be768c78
+leio-vs-upstream.md: fd6fe28c5500cbd4c624ac7ee976e057babdbeae
+leio-vs-upstream.zh.md: 1d721fec1e817a46e43c74b887a8070717fe5bfe

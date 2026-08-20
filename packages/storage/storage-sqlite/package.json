@@ -1,7 +1,7 @@
 {
   "name": "@leio-ai/leio-storage-sqlite",
   "description": "SQLite storage backend (kv facet) for the Leio Harness storage hub",
-  "version": "0.1.0-rc.5",
+  "version": "0.1.0-rc.7",
   "publishConfig": {
     "access": "public"
   },

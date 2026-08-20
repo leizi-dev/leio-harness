@@ -2,7 +2,7 @@
 
 Status: implemented
 
-English | 中文
+[English](2026-08-14-leio-product-namespace-and-branding.md) | 中文
 
 ## Problem
 

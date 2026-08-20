@@ -1,7 +1,7 @@
 {
   "name": "@leio-ai/leio-skill-filesystem",
   "description": "Local filesystem skill provider for the Leio Harness",
-  "version": "0.1.0-rc.5",
+  "version": "0.1.0-rc.7",
   "publishConfig": {
     "access": "public"
   },

@@ -6,7 +6,7 @@
 
 ## 当前发行版
 
-[Leio Harness 1.0.1](https://github.com/leizi-dev/leio-harness/releases/tag/v1.0.1) 是经过测试的 Windows x64 完整安装包，用于手动安装，不作为差分热更新包使用。
+[Leio Harness 1.0.2](https://github.com/leizi-dev/leio-harness/releases/tag/v1.0.2) 是经过测试的 Windows x64 完整安装包，用于手动安装，不作为差分热更新包使用。
 
 在生成并签名小型更新包之前，引导清单仍保持 `1.0.0`。这样可以避免把完整安装包当作热更新下载，保留安装时间和更新体积要求。
 

@@ -1,7 +1,7 @@
 {
   "name": "@leio-ai/leio-llm-pi-ai",
   "description": "pi-ai-backed DeepSeek adapter for the Leio Harness LLM seam (design-verification twin of dsh-llm-deepseek)",
-  "version": "0.1.0-rc.5",
+  "version": "0.1.0-rc.7",
   "publishConfig": {
     "access": "public"
   },

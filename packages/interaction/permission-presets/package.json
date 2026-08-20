@@ -1,7 +1,7 @@
 {
   "name": "@leio-ai/leio-permission-presets",
   "description": "User-facing permission presets (ctx.permissionPresets) for the Leio Harness: one product-level Permissions select bundling the sandbox-mode and approval-policy knobs, written through to their own session events",
-  "version": "0.1.0-rc.5",
+  "version": "0.1.0-rc.7",
   "publishConfig": {
     "access": "public"
   },
